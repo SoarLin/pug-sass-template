@@ -1,20 +1,20 @@
-const path = require("path");
+const path = require('path');
 const glob = require('glob');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    index: "./js/index.js",
+    index: './js/index.js'
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "./js/[name].js?[hash:8]",
+    path: path.resolve(__dirname, 'dist'),
+    filename: './js/[name].js?[hash:8]'
   },
   devServer: {
     compress: true,
-    port: 3000,
+    port: 3000
   },
   module: {
     rules: [
@@ -22,34 +22,41 @@ var config = {
         test: /\.pug$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: {
-              minimize: false, // 不壓縮 HTML
-            },
+              minimize: false // 不壓縮 HTML
+            }
           },
           {
-            loader: "pug-html-loader",
+            loader: 'pug-html-loader',
             options: {
-              pretty: true, // 美化 HTML 的編排 (不壓縮HTML的一種)
-            },
-          },
-        ],
+              pretty: true // 美化 HTML 的編排 (不壓縮HTML的一種)
+            }
+          }
+        ]
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader', // Creates `style` nodes from JS strings
-          'css-loader',   // Translates CSS into CommonJS
-          'sass-loader',  // Compiles Sass to CSS
-        ],
+          'css-loader', // Translates CSS into CommonJS
+          'sass-loader' // Compiles Sass to CSS
+        ]
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader', // Creates `style` nodes from JS strings
+          'css-loader' // Translates CSS into CommonJS
+        ]
       },
       {
         test: /\.js$/,
         use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env']
-            }
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
       },
       {
@@ -85,10 +92,10 @@ var config = {
         include: path.resolve('src/images'),
         exclude: path.resolve('./node_modules')
       }
-    ],
+    ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin()
     // new HtmlWebpackPlugin({
     //   template: './pug/index.pug',
     //   filename: 'index.html',
@@ -102,27 +109,27 @@ var config = {
     //     removeAttributeQuotes: true // 移除屬性的引號
     //   }
     // }),
-  ],
+  ]
 };
 
 glob.sync('./src/pug/*.pug').forEach((path) => {
   const start = path.indexOf('/pug/') + 5;
   const end = path.length - 4;
-  const name = path.slice(start,end);
+  const name = path.slice(start, end);
   config.plugins.push(
-   new HtmlWebpackPlugin({
-     template: './pug/' + name + '.pug',
-     filename: name +'.html',
-     inject: true,
-     chunks: ['index'],
-     minify: {
-       sortAttributes: true,
-       collapseWhitespace: false,
-       collapseBooleanAttributes: true,
-       removeComments: true
-     }
-  })
- );
+    new HtmlWebpackPlugin({
+      template: './pug/' + name + '.pug',
+      filename: name + '.html',
+      inject: true,
+      chunks: ['index'],
+      minify: {
+        sortAttributes: true,
+        collapseWhitespace: false,
+        collapseBooleanAttributes: true,
+        removeComments: true
+      }
+    })
+  );
 });
 
 module.exports = config;
