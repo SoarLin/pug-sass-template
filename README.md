@@ -10,12 +10,18 @@ Pug + Sass template
 
 * Install
 
-`npm install`
+```
+npm install
+```
 
 * Run
 
-`npm start`
+```
+npm start
+```
 
 * Build
 
-`npm run build`
+```
+npm run build
+```
