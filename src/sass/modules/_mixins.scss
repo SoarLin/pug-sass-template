@@ -1,0 +1,70 @@
+@mixin clearfix {
+  &::after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+}
+
+@mixin shadow($color: #545454) {
+  box-shadow: 0 1px 1px 0px rgba($color, .4);
+}
+
+@mixin ellipsis($line:1) {
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @if $line == 1 {
+      white-space: nowrap;
+  } @else {
+      display: -webkit-box;
+      -webkit-line-clamp: $line;
+      -webkit-box-orient: vertical;
+  }
+}
+
+@mixin size($w, $h:$w, $bdrs:0) {
+  width: $w;
+  height: $h;
+  border-radius: $bdrs;
+}
+
+@mixin flex($jc:center, $ai:center) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+@mixin no-image-bg {
+  background-color: rgba(255,255,255, .1);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* RWD @media query setting */
+@mixin lg-desktop {
+  @media screen and (min-width: $desktop-lg-min) {
+      @content;
+  }
+}
+@mixin desktop {
+  @media screen and (max-width: $desktop-max) {
+      @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: $tablet-max) {
+      @content;
+  }
+}
+@mixin phone {
+  @media screen and (max-width: $mobile-max) {
+      @content;
+  }
+}
+@mixin phoneV {
+  @media screen and (max-width: $mobile-min) {
+      @content;
+  }
+}

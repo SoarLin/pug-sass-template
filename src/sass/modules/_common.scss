@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: 'Noto Sans', "文泉驛正黑", "WenQuanYi Zen Hei", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "新細明體", PMingLiU, sans-serif;
+  color: #545454;
+  background-color: #fff;
+}
+
+html {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: $baseFontSize;
+}
