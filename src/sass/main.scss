@@ -2,11 +2,19 @@
 @import 'modules/mixins';
 @import 'modules/common';
 
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  @include phone {
+    font-size: 3.5rem;
+  }
 }
 
 .logo {
-    width: 100px;
+  width: 100px;
 }

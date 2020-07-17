@@ -2,6 +2,12 @@ const path = require('path');
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
+// new ProvidePlugin({
+//   $: 'jquery',
+//   jQuery: 'jquery'//這邊以上是新增
+// });
 
 var config = {
   context: path.resolve(__dirname, 'src'),
@@ -14,7 +20,20 @@ var config = {
   },
   devServer: {
     compress: true,
-    port: 3000
+    port: 3000,
+    stats: {
+      assets: true,
+      cached: false,
+      chunkModules: false,
+      chunkOrigins: false,
+      chunks: false,
+      colors: true,
+      hash: false,
+      modules: false,
+      reasons: false,
+      versions: false,
+      warnings: false
+    }
   },
   module: {
     rules: [
@@ -95,7 +114,14 @@ var config = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'css', to: 'css' },
+        { from: 'images', to: 'images' },
+        { from: 'assets', to: 'assets' }
+      ]
+    }),
     // new HtmlWebpackPlugin({
     //   template: './pug/index.pug',
     //   filename: 'index.html',
