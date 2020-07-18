@@ -49,6 +49,7 @@ All files are in the src folder, it includes `assest`, `css`, `images`, `js`, `s
 - **images** : you can put your jpg, png or gif files here
 - **css** : some external css files
 - **js** : entry point `index.js` is here, and you also can put other customize js files
+- **sass** : put your sass files here, you can manage this folder structure for your own
 - **pug** : pug template files, you can use a different layout for extends
 
 And `webpack.config.js` is webpack 4.x config setting, to handle Pug + Sass into HTML files.
