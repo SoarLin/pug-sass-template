@@ -7,6 +7,8 @@ meta(name="author" content="")
 - var hash = ('0000' + Math.round(Math.random() * (1000))).slice(-4)
 link(rel="icon" href="/assets/favicon.ico?"+hash)
 
-if extraCSS && extraCSS.length > 0
-  each css in extraCSS
-    link(rel="stylesheet", href=css)
+//- import external CSS
+if extraCSS
+  if extraCSS.length > 0
+    each css in extraCSS
+      link(rel="stylesheet", href=css)
