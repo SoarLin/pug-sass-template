@@ -1,13 +1,9 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
-// new ProvidePlugin({
-//   $: 'jquery',
-//   jQuery: 'jquery'//這邊以上是新增
-// });
 
 var config = {
   context: path.resolve(__dirname, 'src'),
@@ -107,9 +103,7 @@ var config = {
               }
             }
           }
-        ],
-        include: path.resolve('src/images'),
-        exclude: path.resolve('./node_modules')
+        ]
       }
     ]
   },
@@ -122,6 +116,10 @@ var config = {
         { from: 'assets', to: 'assets' }
       ]
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery' //這邊以上是新增
+    })
     // new HtmlWebpackPlugin({
     //   template: './pug/index.pug',
     //   filename: 'index.html',

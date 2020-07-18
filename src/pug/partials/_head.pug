@@ -4,7 +4,8 @@ meta(http-equiv="X-UA-Compatible" content="IE=edge")
 meta(name="viewport" content="width=device-width, initial-scale=1")
 meta(name="description" content="#{description}")
 meta(name="author" content="")
-link(rel="icon" href="/assets/favicon.ico?002")
+- var hash = ('0000' + Math.round(Math.random() * (1000))).slice(-4)
+link(rel="icon" href="/assets/favicon.ico?"+hash)
 
 if extraCSS && extraCSS.length > 0
   each css in extraCSS
