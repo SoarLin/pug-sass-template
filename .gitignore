@@ -1,4 +1,8 @@
+# node packages
 node_modules
-backup
 
+# build out folder
 dist
+
+# vscode setting
+.vscode

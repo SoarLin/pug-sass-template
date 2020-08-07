@@ -53,3 +53,8 @@ All files are in the src folder, it includes `assest`, `css`, `images`, `js`, `s
 - **pug** : pug template files, you can use a different layout for extends
 
 And `webpack.config.js` is webpack 4.x config setting, to handle Pug + Sass into HTML files.
+
+## Replace resource
+* favicon.ico : src/assets/favicon.ico
+* Website keywords, description
+* Title for each page
