@@ -2,6 +2,7 @@ extends ./layouts/_default.pug
 block variables
 	- var title = '網站首頁'
 	- var extraCSS = ['/css/carousel.css']
+	- var extraJS = ['https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js', 'https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js', 'https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js']
 
 block content
 	#myCarousel.carousel.slide(data-ride='carousel')

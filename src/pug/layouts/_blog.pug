@@ -10,3 +10,9 @@ html(lang="zh-TW")
       block content
 
     include ../partials/blog/_footer.pug
+
+    //- import external JS
+    if extraJS
+      if extraJS.length > 0
+        each js in extraJS
+          script(src=js)
