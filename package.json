@@ -39,6 +39,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "bootstrap": "^4.5.0",
+    "dayjs": "^1.8.33",
     "firebase": "^7.17.2",
     "jquery": "^3.5.1"
   }
