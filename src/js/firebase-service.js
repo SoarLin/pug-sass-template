@@ -2,8 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/firestore';
 
-import dayjs from 'dayjs';
-
 class DBHelper {
   constructor(collectionName = null) {
     this.DB = null;
