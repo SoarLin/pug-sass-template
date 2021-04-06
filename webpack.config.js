@@ -13,8 +13,8 @@ module.exports = (env, options) => {
   console.log('options.mode = ', options.mode);
 
   // Pass variables in to pug files (https://www.npmjs.com/package/pug-html-loader)
-  // 1. Development Mode: add 'options.data' in pug-html-loader to pass into pug
-  // 2. Production Mode: add 'templateParameters' in HtmlWebpackPlugin config to
+  // 1. Method 1: add 'options.data' in pug-html-loader to pass into pug
+  // 2. Method 2: add 'templateParameters' in HtmlWebpackPlugin config to
   //    pass variable into pug
   // Pass variables into Sass/SCSS (https://www.npmjs.com/package/sass-loader#additionaldata)
   // - add 'options.additionalData' in sass-loader to pass variables
@@ -145,43 +145,45 @@ module.exports = (env, options) => {
         $: 'jquery',
         jQuery: 'jquery' //這邊以上是新增
       }),
-      // new HtmlWebpackPlugin({
-      //   template: './pug/index.pug',
-      //   filename: 'index.html',
-      //   inject: true,
-      //   chunks: ['index'],
-      //   templateParameters: _gParams,
-      //   minify: {
-      //     sortAttributes: true,
-      //     collapseWhitespace: false, // 折疊空白字元就是壓縮Html
-      //     collapseBooleanAttributes: true, // 折疊布林值属性，例:readonly checked
-      //     removeComments: true, // 移除註釋
-      //     removeAttributeQuotes: true // 移除屬性的引號
-      //   }
-      // }),
+      // For single pug file
+      new HtmlWebpackPlugin({
+        template: './pug/index.pug',
+        filename: 'index.html',
+        inject: true,
+        chunks: ['index'],
+        // templateParameters: _gParams,
+        minify: {
+          sortAttributes: true,
+          collapseWhitespace: false, // 折疊空白字元就是壓縮Html
+          collapseBooleanAttributes: true, // 折疊布林值属性，例:readonly checked
+          removeComments: true, // 移除註釋
+          removeAttributeQuotes: true // 移除屬性的引號
+        }
+      }),
     ]
   };
 
-  glob.sync('./src/pug/*.pug').forEach((path) => {
-    const start = path.indexOf('/pug/') + 5;
-    const end = path.length - 4;
-    const name = path.slice(start, end);
-    config.plugins.push(
-      new HtmlWebpackPlugin({
-        template: './pug/' + name + '.pug',
-        filename: name + '.html',
-        inject: true,
-        // templateParameters: _gParams,
-        chunks: ['index'],
-        minify: {
-          sortAttributes: true,
-          collapseWhitespace: false,
-          collapseBooleanAttributes: true,
-          removeComments: true
-        }
-      })
-    );
-  });
+  // For mutiple pug files
+  // glob.sync('./src/pug/*.pug').forEach((path) => {
+  //   const start = path.indexOf('/pug/') + 5;
+  //   const end = path.length - 4;
+  //   const name = path.slice(start, end);
+  //   config.plugins.push(
+  //     new HtmlWebpackPlugin({
+  //       template: './pug/' + name + '.pug',
+  //       filename: name + '.html',
+  //       inject: true,
+  //       // templateParameters: _gParams,
+  //       chunks: ['index'],
+  //       minify: {
+  //         sortAttributes: true,
+  //         collapseWhitespace: false,
+  //         collapseBooleanAttributes: true,
+  //         removeComments: true
+  //       }
+  //     })
+  //   );
+  // });
 
   return config;
 };
