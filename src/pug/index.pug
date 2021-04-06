@@ -1,7 +1,9 @@
 extends ./layouts/_default.pug
 block variables
 	- var title = '網站首頁'
-	- var extraCSS = ['/css/carousel.css']
+	- var prefix = FILE_PREFIX
+	- var extraCSS = [FILE_PREFIX+'css/carousel.css']
+	- var imgPrefixUrl = IMG_PREFIX_URL
 
 block content
 	#myCarousel.carousel.slide(data-ride='carousel')
@@ -10,9 +12,7 @@ block content
 			li(data-target='#myCarousel', data-slide-to='1')
 			li(data-target='#myCarousel', data-slide-to='2')
 		.carousel-inner
-			.carousel-item.active
-				svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
-					rect(width='100%', height='100%', fill='#777')
+			.carousel-item.item-bg.active
 				.container
 					.carousel-caption.text-left
 						h1 Example headline.
@@ -54,10 +54,7 @@ block content
 		// Three columns of text below the carousel
 		.row
 			.col-lg-4
-				svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
-					title Placeholder
-					rect(width='100%', height='100%', fill='#777')
-					text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
+				img.rounded-circle(idth='140', height='140', src=imgPrefixUrl+'images/soarlin-avatar.jpg', alt="")
 				h2 Heading
 				p
 					| Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
@@ -136,4 +133,3 @@ block content
 						rect(width='100%', height='100%', fill='#eee')
 						text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
 			hr.featurette-divider
-
