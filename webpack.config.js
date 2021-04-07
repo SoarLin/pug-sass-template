@@ -13,9 +13,7 @@ module.exports = (env, options) => {
   console.log('options.mode = ', options.mode);
 
   // Pass variables in to pug files (https://www.npmjs.com/package/pug-html-loader)
-  // 1. Method 1: add 'options.data' in pug-html-loader to pass into pug
-  // 2. Method 2: add 'templateParameters' in HtmlWebpackPlugin config to
-  //    pass variable into pug
+  // - add 'options.data' in pug-html-loader to pass into pug
   // Pass variables into Sass/SCSS (https://www.npmjs.com/package/sass-loader#additionaldata)
   // - add 'options.additionalData' in sass-loader to pass variables
   const _gParams = {
@@ -151,7 +149,6 @@ module.exports = (env, options) => {
         filename: 'index.html',
         inject: true,
         chunks: ['index'],
-        // templateParameters: _gParams,
         minify: {
           sortAttributes: true,
           collapseWhitespace: false, // 折疊空白字元就是壓縮Html
@@ -173,7 +170,6 @@ module.exports = (env, options) => {
   //       template: './pug/' + name + '.pug',
   //       filename: name + '.html',
   //       inject: true,
-  //       // templateParameters: _gParams,
   //       chunks: ['index'],
   //       minify: {
   //         sortAttributes: true,
