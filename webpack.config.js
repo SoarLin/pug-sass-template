@@ -55,7 +55,7 @@ module.exports = (env, options) => {
             {
               loader: 'html-loader',
               options: {
-                minimize: false // 不壓縮 HTML
+                minimize: (options.mode === 'production') ? true : false
               }
             },
             {
