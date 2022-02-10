@@ -30,7 +30,7 @@
     "html-webpack-plugin": "^4.5.2",
     "html-webpack-pug-plugin": "^2.0.1",
     "image-webpack-loader": "^6.0.0",
-    "node-forge": ">=0.10.0",
+    "node-forge": ">=1.0.0",
     "node-sass": "^7.0.0",
     "normalize-url": ">=4.5.1",
     "pug": "^3.0.2",
