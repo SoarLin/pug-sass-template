@@ -1,5 +1,6 @@
 # node packages
 node_modules
+package-lock.json
 
 # build out folder
 dist

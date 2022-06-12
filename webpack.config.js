@@ -5,8 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-
-
 module.exports = (env, options) => {
   // Test webpack 4.x pass enviroment variables
   console.log('env = ', env);
