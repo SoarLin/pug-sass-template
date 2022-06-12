@@ -59,8 +59,7 @@ module.exports = (env, options) => {
             {
               loader: 'pug-html-loader',
               options: {
-                data: _gParams,
-                pretty: true // 美化 HTML 的編排 (不壓縮HTML的一種)
+                data: _gParams
               }
             }
           ]
