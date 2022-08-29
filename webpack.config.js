@@ -4,8 +4,7 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, options) => {
   // Test webpack 4.x pass enviroment variables
@@ -70,7 +69,7 @@ module.exports = (env, options) => {
         {
           test: /\.s[ac]ss$/i,
           use: [
-            'style-loader', // Creates `style` nodes from JS strings
+            MiniCssExtractPlugin.loader,
             'css-loader', // Translates CSS into CommonJS
             {
               loader: 'sass-loader',
@@ -142,6 +141,9 @@ module.exports = (env, options) => {
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery' //這邊以上是新增
+      }),
+      new MiniCssExtractPlugin({
+        filename: 'css/style.css',
       }),
       // For single pug file
       new HtmlWebpackPlugin({
