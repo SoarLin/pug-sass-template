@@ -4,31 +4,29 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
-
-module.exports = (env, options) => {
-  // Test webpack 4.x pass enviroment variables
-  console.log('env = ', env);
-  console.log('options.mode = ', options.mode);
+module.exports = (env, argv) => {
+  // Test webpack 5.x pass enviroment variables
+  console.log('argv.mode = ', argv.mode);
 
   // Pass variables in to pug files (https://www.npmjs.com/package/pug-html-loader)
   // - add 'options.data' in pug-html-loader to pass into pug
   // Pass variables into Sass/SCSS (https://www.npmjs.com/package/sass-loader#additionaldata)
   // - add 'options.additionalData' in sass-loader to pass variables
   const _gParams = {
-    FILE_PREFIX: (options.mode === 'production') ? '/dist/' : '/',
-    IMG_PREFIX_URL: (options.mode === 'production') ? 'https://soarlin.github.io/' : '/'
+    FILE_PREFIX: (argv.mode === 'production') ? '/dist/' : '/',
+    IMG_PREFIX_URL: (argv.mode === 'production') ? 'https://soarlin.github.io/' : '/'
   };
 
   var config = {
     context: path.resolve(__dirname, 'src'),
     entry: {
-      index: './js/index.js'
+      index: './js/index.js',
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: './js/[name].js?[hash:8]'
+      filename: './js/[name].js?[chunkhash]'
     },
     devServer: {
       compress: true,
@@ -70,13 +68,13 @@ module.exports = (env, options) => {
         {
           test: /\.s[ac]ss$/i,
           use: [
-            'style-loader', // Creates `style` nodes from JS strings
+            MiniCssExtractPlugin.loader,
             'css-loader', // Translates CSS into CommonJS
             {
               loader: 'sass-loader',
               options: {
                 sourceMap: true,
-                additionalData: "$env: '" + options.mode + "'; $imgPrefix: '" + _gParams.IMG_PREFIX_URL + "';"
+                additionalData: "$env: '" + argv.mode + "'; $imgPrefix: '" + _gParams.IMG_PREFIX_URL + "';"
               }
             }
           ]
@@ -84,7 +82,7 @@ module.exports = (env, options) => {
         {
           test: /\.css$/i,
           use: [
-            'style-loader', // Creates `style` nodes from JS strings
+            MiniCssExtractPlugin.loader,
             'css-loader' // Translates CSS into CommonJS
           ]
         },
@@ -104,7 +102,7 @@ module.exports = (env, options) => {
               loader: 'url-loader',
               options: {
                 limit: 8192,
-                name: '[path][name].[ext]?[hash:8]'
+                name: '[path][name].[ext]?[chunkhash]'
               }
             },
             {
@@ -143,43 +141,46 @@ module.exports = (env, options) => {
         $: 'jquery',
         jQuery: 'jquery' //這邊以上是新增
       }),
-      // For single pug file
-      new HtmlWebpackPlugin({
-        template: './pug/index.pug',
-        filename: 'index.html',
-        inject: true,
-        chunks: ['index'],
-        minify: {
-          sortAttributes: true,
-          collapseWhitespace: false, // 折疊空白字元就是壓縮Html
-          collapseBooleanAttributes: true, // 折疊布林值属性，例:readonly checked
-          removeComments: true, // 移除註釋
-          removeAttributeQuotes: true // 移除屬性的引號
-        }
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].css',
       }),
+      // For single pug file
+      // new HtmlWebpackPlugin({
+      //   template: './pug/index.pug',
+      //   filename: 'index.html',
+      //   inject: true,
+      //   chunks: ['index'],
+      //   minify: {
+      //     sortAttributes: true,
+      //     collapseWhitespace: false, // 折疊空白字元就是壓縮Html
+      //     collapseBooleanAttributes: true, // 折疊布林值属性，例:readonly checked
+      //     removeComments: true, // 移除註釋
+      //     removeAttributeQuotes: true // 移除屬性的引號
+      //   }
+      // }),
     ]
   };
 
   // For mutiple pug files
-  // glob.sync('./src/pug/*.pug').forEach((path) => {
-  //   const start = path.indexOf('/pug/') + 5;
-  //   const end = path.length - 4;
-  //   const name = path.slice(start, end);
-  //   config.plugins.push(
-  //     new HtmlWebpackPlugin({
-  //       template: './pug/' + name + '.pug',
-  //       filename: name + '.html',
-  //       inject: true,
-  //       chunks: ['index'],
-  //       minify: {
-  //         sortAttributes: true,
-  //         collapseWhitespace: false,
-  //         collapseBooleanAttributes: true,
-  //         removeComments: true
-  //       }
-  //     })
-  //   );
-  // });
+  glob.sync('./src/pug/*.pug').forEach((path) => {
+    const start = path.indexOf('/pug/') + 5;
+    const end = path.length - 4;
+    const name = path.slice(start, end);
+    config.plugins.push(
+      new HtmlWebpackPlugin({
+        template: './pug/' + name + '.pug',
+        filename: name + '.html',
+        inject: true,
+        chunks: ['index'],
+        minify: {
+          sortAttributes: true,
+          collapseWhitespace: false,
+          collapseBooleanAttributes: true,
+          removeComments: true
+        }
+      })
+    );
+  });
 
   return config;
 };
