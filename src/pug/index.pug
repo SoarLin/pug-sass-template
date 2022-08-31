@@ -6,130 +6,113 @@ block variables
 	- var imgPrefixUrl = IMG_PREFIX_URL
 
 block content
-	#myCarousel.carousel.slide(data-ride='carousel')
-		ol.carousel-indicators
-			li.active(data-target='#myCarousel', data-slide-to='0')
-			li(data-target='#myCarousel', data-slide-to='1')
-			li(data-target='#myCarousel', data-slide-to='2')
+	#myCarousel.carousel.slide(data-bs-ride='carousel')
+		.carousel-indicators
+			button.active(type='button' data-bs-target='#myCarousel' data-bs-slide-to='0' aria-current='true' aria-label='Slide 1')
+			button(type='button' data-bs-target='#myCarousel' data-bs-slide-to='1' aria-label='Slide 2')
+			button(type='button' data-bs-target='#myCarousel' data-bs-slide-to='2' aria-label='Slide 3')
 		.carousel-inner
-			.carousel-item.item-bg.active
+			.carousel-item.item-bg.bg-0.active
 				.container
-					.carousel-caption.text-left
+					.carousel-caption.text-start
 						h1 Example headline.
+						p Some representative placeholder content for the first slide of the carousel.
 						p
-							| Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget
-							| metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-						p
-							a.btn.btn-lg.btn-primary(href='#', role='button') Sign up today
-			.carousel-item
-				svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
-					rect(width='100%', height='100%', fill='#777')
+							a.btn.btn-lg.btn-primary(href='#') Sign up today
+			.carousel-item.item-bg.bg-1
 				.container
 					.carousel-caption
 						h1 Another example headline.
+						p Some representative placeholder content for the second slide of the carousel.
 						p
-							| Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget
-							| metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-						p
-							a.btn.btn-lg.btn-primary(href='#', role='button') Learn more
-			.carousel-item
-				svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
-					rect(width='100%', height='100%', fill='#777')
+							a.btn.btn-lg.btn-primary(href='#') Learn more
+			.carousel-item.item-bg.bg-2
 				.container
-					.carousel-caption.text-right
+					.carousel-caption.text-end
 						h1 One more for good measure.
+						p Some representative placeholder content for the third slide of this carousel.
 						p
-							| Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget
-							| metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-						p
-							a.btn.btn-lg.btn-primary(href='#', role='button') Browse gallery
-		a.carousel-control-prev(href='#myCarousel', role='button', data-slide='prev')
+							a.btn.btn-lg.btn-primary(href='#') Browse gallery
+		button.carousel-control-prev(type='button' data-bs-target='#myCarousel' data-bs-slide='prev')
 			span.carousel-control-prev-icon(aria-hidden='true')
-			span.sr-only Previous
-		a.carousel-control-next(href='#myCarousel', role='button', data-slide='next')
+			span.visually-hidden Previous
+		button.carousel-control-next(type='button' data-bs-target='#myCarousel' data-bs-slide='next')
 			span.carousel-control-next-icon(aria-hidden='true')
-			span.sr-only Next
+			span.visually-hidden Next
+
 
 	.container.marketing
 		// Three columns of text below the carousel
 		.row
 			.col-lg-4
 				img.rounded-circle(idth='140', height='140', src=imgPrefixUrl+'images/soarlin-avatar.jpg', alt="")
-				h2 Heading
+				h2.fw-normal Heading
 				p
-					| Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-					| vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus
-					| magna.
+					| Some representative placeholder content for the three columns of text below the carousel. This is the first column.
 				p
-					a.btn.btn-secondary(href='#', role='button') View details »
+					a.btn.btn-secondary(href='#') View details &raquo;
+			// /.col-lg-4
 			.col-lg-4
-				svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
+				svg.bd-placeholder-img.rounded-circle(width='140' height='140' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 140x140' preserveaspectratio='xMidYMid slice' focusable='false')
 					title Placeholder
-					rect(width='100%', height='100%', fill='#777')
-					text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
-				h2 Heading
+					rect(width='100%' height='100%' fill='#777')
+					text(x='50%' y='50%' fill='#777' dy='.3em') 140x140
+				h2.fw-normal Heading
 				p
-					| Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-					| mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-					| condimentum nibh.
+					| Another exciting bit of representative placeholder content. This time, we&apos;ve moved on to the second column.
 				p
-					a.btn.btn-secondary(href='#', role='button') View details »
+					a.btn.btn-secondary(href='#') View details &raquo;
+			// /.col-lg-4
 			.col-lg-4
-				svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
+				svg.bd-placeholder-img.rounded-circle(width='140' height='140' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 140x140' preserveaspectratio='xMidYMid slice' focusable='false')
 					title Placeholder
-					rect(width='100%', height='100%', fill='#777')
-					text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
-				h2 Heading
+					rect(width='100%' height='100%' fill='#777')
+					text(x='50%' y='50%' fill='#777' dy='.3em') 140x140
+				h2.fw-normal Heading
+				p And lastly this, the third column of representative placeholder content.
 				p
-					| Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-					| felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-					| massa justo sit amet risus.
-				p
-					a.btn.btn-secondary(href='#', role='button') View details »
-			// START THE FEATURETTES
-			hr.featurette-divider
-			.row.featurette
-				.col-md-7
-					h2.featurette-heading
-						| First featurette heading.
-						span.text-muted It’ll blow your mind.
-					p.lead
-						| Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-						| semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-						| commodo.
-				.col-md-5
-					svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
-						title Placeholder
-						rect(width='100%', height='100%', fill='#eee')
-						text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
-			hr.featurette-divider
-			.row.featurette
-				.col-md-7.order-md-2
-					h2.featurette-heading
-						| Oh yeah, it’s that good.
-						span.text-muted See for yourself.
-					p.lead
-						| Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-						| semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-						| commodo.
-				.col-md-5.order-md-1
-					svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
-						title Placeholder
-						rect(width='100%', height='100%', fill='#eee')
-						text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
-			hr.featurette-divider
-			.row.featurette
-				.col-md-7
-					h2.featurette-heading
-						| And lastly, this one.
-						span.text-muted Checkmate.
-					p.lead
-						| Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-						| semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-						| commodo.
-				.col-md-5
-					svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
-						title Placeholder
-						rect(width='100%', height='100%', fill='#eee')
-						text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
-			hr.featurette-divider
+					a.btn.btn-secondary(href='#') View details &raquo;
+			// /.col-lg-4
+
+		// START THE FEATURETTES
+		hr.featurette-divider
+		.row.featurette
+			.col-md-7
+				h2.featurette-heading.fw-normal.lh-1
+					| First featurette heading.
+					span.text-muted It&rsquo;ll blow your mind.
+				p.lead
+					| Some great placeholder content for the first featurette here. Imagine some exciting prose here.
+			.col-md-5
+				svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500' height='500' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 500x500' preserveaspectratio='xMidYMid slice' focusable='false')
+					title Placeholder
+					rect(width='100%' height='100%' fill='#eee')
+					text(x='50%' y='50%' fill='#aaa' dy='.3em') 500x500
+		hr.featurette-divider
+		.row.featurette
+			.col-md-7.order-md-2
+				h2.featurette-heading.fw-normal.lh-1
+					| Oh yeah, it&rsquo;s that good.
+					span.text-muted See for yourself.
+				p.lead
+					| Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.
+			.col-md-5.order-md-1
+				svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500' height='500' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 500x500' preserveaspectratio='xMidYMid slice' focusable='false')
+					title Placeholder
+					rect(width='100%' height='100%' fill='#eee')
+					text(x='50%' y='50%' fill='#aaa' dy='.3em') 500x500
+		hr.featurette-divider
+		.row.featurette
+			.col-md-7
+				h2.featurette-heading.fw-normal.lh-1
+					| And lastly, this one.
+					span.text-muted Checkmate.
+				p.lead
+					| And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.
+			.col-md-5
+				svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500' height='500' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Placeholder: 500x500' preserveaspectratio='xMidYMid slice' focusable='false')
+					title Placeholder
+					rect(width='100%' height='100%' fill='#eee')
+					text(x='50%' y='50%' fill='#aaa' dy='.3em') 500x500
+		hr.featurette-divider
+		// /END THE FEATURETTES
