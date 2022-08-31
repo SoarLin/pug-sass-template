@@ -2,9 +2,9 @@
 
 ## Environment
 
-- Node v14.16.0
-- NPM 6.14.11
-- Webpack 4.46
+- Node v14.18.0
+- NPM 6.14.15
+- Webpack 5.74
 
 ## Getting Started
 
