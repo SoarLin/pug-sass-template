@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
   // Test webpack 5.x pass enviroment variables
-  console.log('argv.mode = ', argv.mode);
+  console.log('argv.mode = ' + argv.mode);
 
   // Pass variables in to pug files (https://www.npmjs.com/package/pug-html-loader)
   // - add 'options.data' in pug-html-loader to pass into pug
@@ -53,14 +53,13 @@ module.exports = (env, argv) => {
             {
               loader: 'html-loader',
               options: {
-                minimize: false // 不壓縮 HTML
+                minimize: (argv.mode === 'production') ? true : false
               }
             },
             {
               loader: 'pug-html-loader',
               options: {
-                data: _gParams,
-                pretty: true // 美化 HTML 的編排 (不壓縮HTML的一種)
+                data: _gParams
               }
             }
           ]
