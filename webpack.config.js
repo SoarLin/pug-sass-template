@@ -29,21 +29,11 @@ module.exports = (env, argv) => {
       filename: './js/[name].js?[chunkhash]'
     },
     devServer: {
+      static: {
+        directory: path.join(__dirname, 'public'),
+      },
       compress: true,
-      port: 3000,
-      stats: {
-        assets: true,
-        cached: false,
-        chunkModules: false,
-        chunkOrigins: false,
-        chunks: false,
-        colors: true,
-        hash: false,
-        modules: false,
-        reasons: false,
-        versions: false,
-        warnings: false
-      }
+      port: 9000,
     },
     module: {
       rules: [
