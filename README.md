@@ -58,3 +58,9 @@ And `webpack.config.js` is webpack 4.x config setting, to handle Pug + Sass into
 * favicon.ico : src/assets/favicon.ico
 * Website keywords, description
 * Title for each page
+
+### Note
+The following two packages have version restrictions.
+
+* html-loader: 1.3.2. If than v1.3.2, there is a problem with the compiled default screen style.
+* css-loader: 3.6.0. If higher than than v3.6.0, will happen race condition to makes compilation failure.
